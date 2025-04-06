@@ -146,7 +146,7 @@ function yourls_sqlite_last_24h_hits() {
 	$query = "SELECT
 		strftime('%H', `click_time`) AS `time`,
 		COUNT(*) AS `count`
-	FROM `yourls_log`
+	FROM `$table`
 	WHERE `shorturl` $keyword_range AND `click_time` > datetime('now', '-1 day')
 	GROUP BY `time`;";
 	$rows = $ydb->fetchObjects( $query );
